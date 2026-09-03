@@ -1,20 +1,19 @@
 package src;
 
 public class Coordinates {
-    int longitude;
-    int latitute;
-    int height;
+    private int longitude;
+    private int latitute;
+    private int height;
 
     Coordinates(int p_longitude, int p_latitute, int p_height){
         this.longitude = p_longitude;
         this.latitute = p_latitute;
         this.height = p_height;
     }
-    int getLongitude(){return this.longitude;}
-
-    int getLatitute(){return this.latitute;}
-
-    int getHeight(){return this.height;}
+    
+    public int getLongitude(){return this.longitude;}
+    public int getLatitute(){return this.latitute;}
+    public int getHeight(){return this.height;}
 
 }
 
