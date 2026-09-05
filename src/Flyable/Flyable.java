@@ -1,4 +1,6 @@
-package src;
+package src.Flyable;
+
+import src.Weather.WeatherTower;
 
 public abstract class Flyable {
 

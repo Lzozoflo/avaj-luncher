@@ -1,4 +1,6 @@
-package src;
+package src.Flyable;
+
+import src.Coordinates;
 
 public class AircraftFactory {
     private int p_id = 0;

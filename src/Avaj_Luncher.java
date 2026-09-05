@@ -2,6 +2,10 @@ package src;
 import java.io.File;
 import java.util.Scanner;
 
+import src.Flyable.AircraftFactory;
+import src.Flyable.Flyable;
+import src.Weather.WeatherTower;
+
 // Signification des symboles UML :
 // - (Moins) : private (accessible uniquement au sein de la classe Tower).
 // + (Plus) : public (accessible depuis n'importe quelle autre classe).
@@ -74,13 +78,17 @@ public class Avaj_Luncher {
                 i++;
                 
                 Coordinates coordinates = new Coordinates(Integer.parseInt(tab[2]), Integer.parseInt(tab[3]), Integer.parseInt(tab[4]));
-                Flyable newAirCraft = AircraftFactory.newAircraft(tab[0], tab[1], coordinates);
-                wt.register(newAirCraft);
-                newAirCraft.registerTower(wt);
+                Flyable newFlyable = AircraftFactory.newAircraft(tab[0], tab[1], coordinates);
+                newFlyable.registerTower(wt);
+                wt.register(newFlyable);
+            }
+
+
+
+            System.out.println("start sim");
+            while (NbSimulation-- > -1) {
                 
             }
-            // System.out.println(listAircraft);
-
 
 
         } catch (Exception e) {

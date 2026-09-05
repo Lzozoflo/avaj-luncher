@@ -1,9 +1,11 @@
-package src;
+package src.Weather;
+
+import src.Coordinates;
 
 public class WeatherTower extends Tower {
 
     public String getWeather(Coordinates p_coordinates) {
-        return "SUN";
+        return WeatherProvider.getCurrentWeather(p_coordinates);
     }
  
     public void changeWeather(){
