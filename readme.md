@@ -1,0 +1,1 @@
+find * -name "*.java" > sources.txt && javac @sources.txt && java src.Avaj_Luncher "./intra/scenario.txt";  rm src/*.class src/*/*.class && echo -e "\n\n" && cat simulation.txt

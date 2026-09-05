@@ -13,16 +13,16 @@ public class Aircraft extends Flyable {
         this.coordinates = p_coordinate;
     }
 
-    public long getId(){
+    public final long getId(){
         return this.id;
     }
-    public String getName(){
+    public final String getName(){
         return this.name;
     }
-    public Coordinates getCoordinates(){
+    public final Coordinates getCoordinates(){
         return this.coordinates;
     }
-    public String getLogName(){
+    public final String getLogName(){
         return this.getClass().getSimpleName()+"#"+this.getName()+"("+this.getId()+")";
     }
     public void updateConditions(){}

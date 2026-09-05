@@ -18,9 +18,9 @@ public class Helicopter extends Aircraft {
         Coordinates last_coordinates = this.coordinates;
 
         int longitude = last_coordinates.getLongitude();
+        String weather = this.weatherTower.getWeather(last_coordinates);
         int latitude = last_coordinates.getLatitute();
         int height = last_coordinates.getHeight();
-        String weather = this.weatherTower.getWeather(last_coordinates);
         switch (weather) {
             case "SUN":
                 longitude += 10;
@@ -36,10 +36,10 @@ public class Helicopter extends Aircraft {
                 break;
 
             case "SNOW":
-                longitude -= 15;
+                height -= 12;
                 break;
             
-                default:
+            default:
                 System.exit(42);
                 break;
         }

@@ -17,10 +17,10 @@ public class Balloon extends Aircraft {
     public void updateConditions(){
         Coordinates last_coordinates = this.coordinates;
 
+        String weather = this.weatherTower.getWeather(last_coordinates);
         int longitude = last_coordinates.getLongitude();
         int latitude = last_coordinates.getLatitute();
         int height = last_coordinates.getHeight();
-        String weather = this.weatherTower.getWeather(last_coordinates);
         switch (weather) {
             case "SUN":
                 longitude += 2;
@@ -33,22 +33,16 @@ public class Balloon extends Aircraft {
 
             case "FOG":
                 height -= 3;
-
                 break;
 
             case "SNOW":
                 height -= 15;
-
                 break;
             
-                default:
+            default:
                 System.exit(42);
                 break;
         }
-        if (height <= 0)
-            this.weatherTower.unregister(this);
-        else if (height > 100)
-            height = 100;
         this.coordinates = new Coordinates(longitude, latitude, height);
     }
 

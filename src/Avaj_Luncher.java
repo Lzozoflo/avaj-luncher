@@ -2,6 +2,7 @@ package src;
 import java.io.File;
 import java.util.Scanner;
 
+import src.LogFile.LogFile;
 import src.Flyable.AircraftFactory;
 import src.Flyable.Flyable;
 import src.Weather.WeatherTower;
@@ -14,7 +15,7 @@ import src.Weather.WeatherTower;
 
 public class Avaj_Luncher {
     
-    static boolean checkScenario(String tab[]){
+    static boolean checkLineScenario(String tab[]){
 
         if (tab.length != 5)
             return false;
@@ -71,13 +72,13 @@ public class Avaj_Luncher {
                 String data = myReader.nextLine();
                 String tab[] = data.split("\\s+");
                 
-                if (!checkScenario(tab)){
+                if (!checkLineScenario(tab)){
                     System.err.println("Error scenario line " + i);
                     return;
                 }
                 i++;
                 
-                Coordinates coordinates = new Coordinates(Integer.parseInt(tab[2]), Integer.parseInt(tab[3]), Integer.parseInt(tab[4]));
+                Coordinates coordinates = new Coordinates(Integer.parseInt(tab[2]), Integer.parseInt(tab[3]), Math.min(Integer.parseInt(tab[4]), 100));
                 Flyable newFlyable = AircraftFactory.newAircraft(tab[0], tab[1], coordinates);
                 newFlyable.registerTower(wt);
                 wt.register(newFlyable);
@@ -86,11 +87,15 @@ public class Avaj_Luncher {
 
 
             System.out.println("start sim");
-            while (NbSimulation-- > -1) {
-                
+            while (NbSimulation-- > 0) {
+                wt.changeWeather();
+                // LogFile.getInstance().writeLog("nbsim" +NbSimulation+ "\n");
+
             }
 
 
+            LogFile.getInstance().close();
+        //     System.out.println("all good");
         } catch (Exception e) {
             System.err.println("An error occurred.");
             e.printStackTrace();

@@ -16,10 +16,10 @@ public class JetPlane extends Aircraft {
     public void updateConditions(){
         Coordinates last_coordinates = this.coordinates;
 
+        String weather = this.weatherTower.getWeather(last_coordinates);
         int longitude = last_coordinates.getLongitude();
         int latitude = last_coordinates.getLatitute();
         int height = last_coordinates.getHeight();
-        String weather = this.weatherTower.getWeather(last_coordinates);
         switch (weather) {
             case "SUN":
                 latitude += 10;
@@ -38,7 +38,7 @@ public class JetPlane extends Aircraft {
                 height -= 7;
                 break;
             
-                default:
+            default:
                 System.exit(42);
                 break;
         }

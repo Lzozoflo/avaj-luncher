@@ -3,18 +3,18 @@ package src.Flyable;
 import src.Coordinates;
 
 public class AircraftFactory {
-    private int p_id = 0;
+    private int p_id = 1;
 
-    private static AircraftFactory single_instance = null;
+    private static AircraftFactory INSTANCE = null;
     
     private AircraftFactory(){}
 
     public static Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates){
-        if (single_instance == null)
-            single_instance = new AircraftFactory();
+        if (INSTANCE == null)
+            INSTANCE = new AircraftFactory();
 
-        int tmp_id = single_instance.p_id; 
-        single_instance.p_id++;
+        int tmp_id = INSTANCE.p_id; 
+        INSTANCE.p_id++;
 
         switch (p_type) {
             case "Balloon":
